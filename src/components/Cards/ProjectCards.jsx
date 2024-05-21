@@ -15,6 +15,29 @@ const Button = styled.button`
     cursor: pointer;
     transition: all 0.8s ease-in-out;
 `
+
+const Tag = styled.span`
+    font-size: 12px;
+    font-weight: 400;
+    color: ${({ theme }) => theme.primary};
+    background-color: ${({ theme }) => theme.primary + 15};
+    padding: 2px 8px;
+    border-radius: 10px;
+`
+
+const Title = styled.div`
+    font-size: 20px;
+    font-weight: 600;
+    color: ${({ theme }) => theme.text_secondary};
+    overflow: hidden;
+    display: -webkit-box;
+    max-width: 100%;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+`
+
 const Card = styled.div`
     width: 330px;
     height: 490px;
@@ -36,6 +59,11 @@ const Card = styled.div`
     &:hover ${Button} {
         display: block;
     }
+
+    &:hover ${Title} {
+            transition: color 1s ease;
+            color: orange;
+    }
 `
 
 const Image = styled.img`
@@ -55,33 +83,12 @@ const Tags = styled.div`
     margin-top: 4px;
 `
 
-const Tag = styled.span`
-    font-size: 12px;
-    font-weight: 400;
-    color: ${({ theme }) => theme.primary};
-    background-color: ${({ theme }) => theme.primary + 15};
-    padding: 2px 8px;
-    border-radius: 10px;
-`
-
 const Details = styled.div`
     width: 100%;
     display: flex;
     flex-direction: column;
     gap: 0px;
     padding: 0px 2px;
-`
-const Title = styled.div`
-    font-size: 20px;
-    font-weight: 600;
-    color: ${({ theme }) => theme.text_secondary};
-    overflow: hidden;
-    display: -webkit-box;
-    max-width: 100%;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
 `
 
 const Date = styled.div`

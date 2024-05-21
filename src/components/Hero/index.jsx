@@ -38,7 +38,6 @@ function Hero() {
                 </HeroInnerContainer>
 
             </HeroContainer>
-            <p>hi</p>
         </div>
     )
 }

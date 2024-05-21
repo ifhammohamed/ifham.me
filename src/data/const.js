@@ -1,9 +1,9 @@
 export const Bio = {
   name: "Ifham Mohamed",
   roles: [
-    "Full Stack Developer",
-    "UI/UX Enthusiast",
-    "Open Source Contributor",
+    "a Full Stack Developer",
+    "an UI/UX Enthusiast",
+    "an Open Source Contributor",
   ],
   description:
     "I am a motivated and versatile individual, always eager to take on new challenges. With a passion for learning I am dedicated to delivering high-quality results. With a positive attitude and a growth mindset, I am ready to make a meaningful contribution and achieve great things.",

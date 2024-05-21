@@ -3,7 +3,7 @@ import HeroBgAnimation from '../HeroBgAnimation'
 import Typewriter from 'typewriter-effect';
 import { Bio } from '../../data/const';
 import HeroImg from '../../images/HeroImage.jpg';
-import { HeroBg, HeroContainer, HeroInnerContainer, HeroLeftContainer, HeroRightContainer, Img, ResumeButton, Span, SubTitle, TextLoop, Title } from './HeroStyle';
+import { HeroBg, HeroContainer, HeroInnerContainer, HeroLeftContainer, HeroRightContainer, Img, ResumeButton, Span, SubTitle, TextLoop, Title, handleMouseMove, handleMouseLeave } from './HeroStyle';
 
 function Hero() {
     return (
@@ -33,7 +33,7 @@ function Hero() {
 
                     <HeroRightContainer id="Right">
 
-                        <Img src={HeroImg} alt="hero-image" />
+                        <Img src={HeroImg} alt="hero-image" onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave} />
                     </HeroRightContainer>
                 </HeroInnerContainer>
 

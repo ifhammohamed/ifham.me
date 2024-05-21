@@ -97,19 +97,25 @@ export const Img = styled.img`
   position: relative;
   width: 100%;
   height: auto;
-  max-width: 325px; // 3:4 aspect ratio with max-height: 400px
+  max-width: 325px;
   max-height: 400px;
   border-radius: 50%;
   border: 2px solid ${({ theme }) => theme.primary};
+  cursor: pointer;
 
   @media (max-width: 768px) {
-    max-width: 300px; // Keeping 3:4 aspect ratio
+    max-width: 300px;
     max-height: 400px;
   }
 
   @media (max-width: 640px) {
-    max-width: 210px; // Keeping 3:4 aspect ratio
+    max-width: 210px;
     max-height: 280px;
+  }
+
+  &:hover {
+    transform: rotateY(var(--rotate-y, 0)) rotateX(var(--rotate-x, 0));
+    box-shadow: rgba(23, 92, 230, 0.25) 0px 8px 32px;
   }
 `;
 
@@ -202,3 +208,20 @@ export const ResumeButton = styled.a`
     } 
 
 `;
+
+export const handleMouseMove = (event) => {
+  const { clientX, clientY, currentTarget } = event;
+  const { width, height, left, top } = currentTarget.getBoundingClientRect();
+  const x = clientX - left;
+  const y = clientY - top;
+  const rotateY = (x / width) * 20 - 0; // Rotate between -10deg to 10deg based on x position
+  const rotateX = (y / height) * 20 - 5; // Rotate between -10deg to 10deg based on y position
+
+  currentTarget.style.setProperty("--rotate-y", `${rotateY}deg`);
+  currentTarget.style.setProperty("--rotate-x", `${rotateX}deg`);
+};
+
+export const handleMouseLeave = (event) => {
+  event.currentTarget.style.setProperty("--rotate-y", `0deg`);
+  event.currentTarget.style.setProperty("--rotate-x", `0deg`);
+};

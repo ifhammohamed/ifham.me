@@ -47,14 +47,12 @@ export const Desc = styled.div`
     }
 `;
 
-const SkillsContainer = styled.div`
+const SkillContainer = styled.div`
+  perspective: 1000px;
   width: 100%;
   display: flex;
-  flex-wrap: wrap;
-  margin-top: 30px;
-  gap: 30px;
   justify-content: center;
-`
+`;
 
 const Skill = styled.div`
   width: 100%;
@@ -64,16 +62,32 @@ const Skill = styled.div`
   box-shadow: rgba(23, 92, 230, 0.15) 0px 4px 24px;
   border-radius: 16px;
   padding: 18px 36px;
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  transform-style: preserve-3d;
+
+  &:hover {
+    transform: rotateY(var(--rotate-y, 0)) rotateX(var(--rotate-x, 0));
+    box-shadow: rgba(23, 92, 230, 0.25) 0px 8px 32px;
+  }
+
   @media (max-width: 768px) {
     max-width: 400px;
     padding: 10px 36px;
   }
+
   @media (max-width: 500px) {
     max-width: 330px;
     padding: 10px 36px;
   }
+`;
 
-
+const SkillsContainer = styled.div`
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 30px;
+  gap: 30px;
+  justify-content: center;
 `
 
 const SkillTitle = styled.h2`
@@ -86,7 +100,7 @@ const SkillTitle = styled.h2`
 
 const SkillList = styled.div`
   display: flex;
-  justify-content: center; 
+  justify-content: center;
   flex-wrap: wrap;
   gap: 12px;
   margin-bottom: 20px;
@@ -103,6 +117,15 @@ const SkillItem = styled.div`
   align-items: center;
   justify-content: center;
   gap: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.primary};
+    color: #fff;
+    border-color: ${({ theme }) => theme.primary};
+  }
+
   @media (max-width: 768px) {
     font-size: 14px;
     padding: 8px 12px;
@@ -119,6 +142,23 @@ const SkillImage = styled.img`
 `
 
 
+const handleMouseMove = (event) => {
+  const { clientX, clientY, currentTarget } = event;
+  const { width, height, left, top } = currentTarget.getBoundingClientRect();
+  const x = clientX - left;
+  const y = clientY - top;
+  const rotateY = ((x / width) * 20) - 0; // Rotate between -10deg to 10deg based on x position
+  const rotateX = ((y / height) * 20) - 5; // Rotate between -10deg to 10deg based on y position
+
+  currentTarget.style.setProperty('--rotate-y', `${rotateY}deg`);
+  currentTarget.style.setProperty('--rotate-x', `${rotateX}deg`);
+};
+
+const handleMouseLeave = (event) => {
+  event.currentTarget.style.setProperty('--rotate-y', `0deg`);
+  event.currentTarget.style.setProperty('--rotate-x', `0deg`);
+};
+
 const Skills = () => {
   return (
     <Container id="skills">
@@ -128,7 +168,7 @@ const Skills = () => {
         </Desc>
         <SkillsContainer>
           {skills.map((skill) => (
-            <Skill>
+            <Skill onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}>
               <SkillTitle>{skill.title}</SkillTitle>
               <SkillList>
                 {skill.skills.map((item) => (

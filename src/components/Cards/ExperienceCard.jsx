@@ -32,6 +32,23 @@ max-width: 100%;
 -webkit-box-orient: vertical;
 text-overflow: ellipsis;
 `
+const Skill = styled.div`
+    font-size: 15px;
+    font-weight: 400;
+    color: ${({ theme }) => theme.text_primary + 99};
+    @media only screen and (max-width: 768px){
+        font-size: 12px;
+    }
+`;
+
+const Role = styled.div`
+    font-size: 18px;
+    font-weight: 600;
+    color: ${({ theme }) => theme.text_primary + 99};
+    @media only screen and (max-width: 768px){
+        font-size: 14px;
+    }
+`
 
 const Card = styled.div`
     width: 650px;
@@ -44,7 +61,7 @@ const Card = styled.div`
     display: flex;
     flex-direction: column;
     gap: 12px;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.7s ease-in-out;
     &:hover{
         box-shadow: 0px 0px 20px rgba(0,0,0,0.2);
         transform: translateY(-5px);
@@ -67,7 +84,14 @@ const Card = styled.div`
 
     border: 0.1px solid #306EE8;
     box-shadow: rgba(23, 92, 230, 0.15) 0px 4px 24px;
-`
+
+    &:hover {
+        ${Role}, ${Skill} {
+            transition: color 1s ease;
+            color: orange;
+        }
+    }
+`;
 
 const Top = styled.div`
     width: 100%;
@@ -89,16 +113,6 @@ const Body = styled.div`
     width: 100%;
     display: flex;
     flex-direction: column; 
-`
-
-
-const Role = styled.div`
-    font-size: 18px;
-    font-weight: 600;
-    color: ${({ theme }) => theme.text_primary + 99};
-    @media only screen and (max-width: 768px){
-        font-size: 14px;
-    }
 `
 
 const Company = styled.div`
@@ -133,14 +147,7 @@ const ItemWrapper = styled.div`
     gap: 8px;
 `
 
-const Skill = styled.div`
-    font-size: 15px;
-    font-weight: 400;
-    color: ${({ theme }) => theme.text_primary + 99};
-    @media only screen and (max-width: 768px){
-        font-size: 12px;
-    }
-`
+
 
 
 
@@ -167,7 +174,7 @@ const ExperienceCard = ({ experience }) => {
                             <b>Skills:</b>
                             <ItemWrapper>
                                 {experience?.skills?.map((skill, index) => (
-                                    <Skill>• {skill}</Skill>
+                                    <>• <Skill>{skill}</Skill></>
                                 ))}
                             </ItemWrapper>
                         </Skills>

@@ -1,9 +1,11 @@
 import styled from 'styled-components';
-import FacebookIcon from '@mui/icons-material/Facebook';
-import TwitterIcon from '@mui/icons-material/Twitter';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import InstagramIcon from '@mui/icons-material/Instagram';
 import { Bio } from '../../data/const';
+import Hackerrank from '../../images/hackerrank.svg'
+import Linkedin from '../../images/inkedin.svg'
+import Leetcode from '../../images/leetcode.svg'
+import Github from '../../images/github.svg'
+import Stackoverflow from '../../images/stack-overflow.svg'
+import Meedium from '../../images/medium.svg'
 
 const FooterContainer = styled.div`
   width: 100%;
@@ -84,7 +86,24 @@ const Copyright = styled.p`
   text-align: center;
 `;
 
+const SVGIcon = styled.img`
+  width: 25px;
+  height: 25px;
+  color: ${({ theme }) => theme.text_primary};
+  transition: transform 0.2s ease-in-out, filter 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+
+  &:hover {
+    color: ${({ theme }) => theme.primary};
+    transform: scale(1.2);
+    filter: brightness(1.8);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+`;
+
+
 function Footer() {
+  const currentYear = new Date().getFullYear();
+
   return (
     <FooterContainer>
       <FooterWrapper>
@@ -99,13 +118,27 @@ function Footer() {
 
         </Nav>
         <SocialMediaIcons>
-          <SocialMediaIcon href={Bio.facebook} target="display"><FacebookIcon /></SocialMediaIcon>
-          <SocialMediaIcon href={Bio.twitter} target="display"><TwitterIcon /></SocialMediaIcon>
-          <SocialMediaIcon href={Bio.linkedin} target="display"><LinkedInIcon /></SocialMediaIcon>
-          <SocialMediaIcon href={Bio.insta} target="display"><InstagramIcon /></SocialMediaIcon>
+          <SocialMediaIcon href={Bio.linkedin} target="_blank" rel="noopener noreferrer">
+            <SVGIcon src={Linkedin} alt="Linkedin Icon" />
+          </SocialMediaIcon>
+          <SocialMediaIcon href={Bio.github} target="_blank" rel="noopener noreferrer">
+            <SVGIcon src={Github} alt="Github Icon" />
+          </SocialMediaIcon>
+          <SocialMediaIcon href={Bio.medium} target="_blank" rel="noopener noreferrer">
+            <SVGIcon src={Meedium} alt="Medium Icon" />
+          </SocialMediaIcon>
+          <SocialMediaIcon href={Bio.leetcode} target="_blank" rel="noopener noreferrer">
+            <SVGIcon src={Leetcode} alt="LeetCode Icon" />
+          </SocialMediaIcon>
+          <SocialMediaIcon href={Bio.hakerrank} target="_blank" rel="noopener noreferrer">
+            <SVGIcon src={Hackerrank} alt="Hackerrank Icon" />
+          </SocialMediaIcon>
+          <SocialMediaIcon href={Bio.stakeoverflow} target="_blank" rel="noopener noreferrer">
+            <SVGIcon src={Stackoverflow} alt="Stackoverflow Icon" />
+          </SocialMediaIcon>
         </SocialMediaIcons>
         <Copyright>
-          &copy; 2024 Ifham Mohamed. All rights reserved.
+          &copy; {currentYear} Ifham Mohamed. All rights reserved.
         </Copyright>
 
       </FooterWrapper>

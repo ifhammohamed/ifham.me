@@ -12,7 +12,7 @@ function Hero() {
                 <HeroBg>
                     <HeroBgAnimation />
                 </HeroBg>
-                <HeroInnerContainer >
+                <HeroInnerContainer>
                     <HeroLeftContainer id="Left">
                         <Title>Hi, I am <br /> {Bio.name}</Title>
                         <TextLoop>
@@ -32,14 +32,12 @@ function Hero() {
                     </HeroLeftContainer>
 
                     <HeroRightContainer id="Right">
-
                         <Img src={HeroImg} alt="hero-image" onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave} />
                     </HeroRightContainer>
                 </HeroInnerContainer>
-
             </HeroContainer>
         </div>
-    )
+    );
 }
 
 export default Hero

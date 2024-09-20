@@ -2,11 +2,14 @@
   "name": "ifham-folio",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://github.com/ifhammohamed1111/ifham.me",
   "type": "module",
   "scripts": {
-    "dev": "vite",
     "build": "vite build",
-    "lint": "eslint .",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist -r https://github.com/ifhammohamed1111/ifham.me.git",
+    "dev": "vite",
+    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
   "dependencies": {
